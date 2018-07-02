@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.android.redowsko.R
 
-class RVAdapterQuestion(private val context: Context, private val arrayList: ArrayList<*>?) : RecyclerView.Adapter<RVAdapterQuestion.Holder>(){
+class RVAdapterSurvey(private val context: Context, private val arrayList: ArrayList<*>?) : RecyclerView.Adapter<RVAdapterSurvey.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.list_question, parent, false))
+        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.list_survey, parent, false))
     }
 
     override fun getItemCount(): Int = arrayList?.size ?:0
