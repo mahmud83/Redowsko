@@ -26,7 +26,10 @@
         <activity
             android:name=".application.ui.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".application.ui.BabActivity" />
+        <activity android:name=".application.ui.AreaActivity" />
+        <activity android:name=".application.ui.QuestionActivity"></activity>
     </application>
 
 </manifest>

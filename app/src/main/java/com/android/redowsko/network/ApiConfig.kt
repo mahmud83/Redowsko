@@ -6,7 +6,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiConfig {
 
     companion object {
-        const val BASE_URL = ""
+        //const val BASE_URL = "http://192.168.43.39/anows/api_redowsko/index.php/"
+        const val BASE_URL = "http://server.sudja.id/redowsko/index.php/"
     }
 
     private fun retrofit() : Retrofit{
@@ -16,7 +17,7 @@ class ApiConfig {
                 .build()
     }
 
-    fun instance() : ApiInterface{
+    fun instance() : ApiInterface {
         return retrofit().create(ApiInterface::class.java)
     }
 

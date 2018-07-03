@@ -6,4 +6,5 @@ interface BaseView {
     fun showInfoMessage(message:String?)
     fun showProgressDialog()
     fun dismissProgressDialog()
+    fun closeActivity()
 }

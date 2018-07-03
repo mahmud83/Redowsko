@@ -1,5 +1,6 @@
 package com.android.redowsko.application.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -23,6 +24,10 @@ open class BaseFragment : Fragment(),BaseView{
         loading = materialDialog.build()
     }
 
+    fun intentTo(target:Class<*>){
+        startActivity(Intent(activity,target))
+    }
+
     override fun showErrorMessage(message: String?) {
         MDToast.makeText(activity,message, MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR).show()
     }
@@ -42,6 +47,10 @@ open class BaseFragment : Fragment(),BaseView{
     override fun dismissProgressDialog() {
         if(loading.isShowing)
             loading.dismiss()
+    }
+
+    override fun closeActivity() {
+        activity?.finish()
     }
 
 }

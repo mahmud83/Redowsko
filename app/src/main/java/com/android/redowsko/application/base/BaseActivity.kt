@@ -48,4 +48,8 @@ open class BaseActivity : AppCompatActivity(), BaseView{
             loading.dismiss()
     }
 
+    override fun closeActivity() {
+        this.finish()
+    }
+
 }

@@ -12,4 +12,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="DotsWhiteTheme" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
+        <item name="android:tint">#FFFFFF</item>
+    </style>
+
+    <style name="toolbarc"  parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="actionOverflowButtonStyle">@style/DotsWhiteTheme</item>
+    </style>
+
 </resources>

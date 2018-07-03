@@ -9,6 +9,7 @@ import android.view.ViewGroup
 
 import com.android.redowsko.R
 import com.android.redowsko.application.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
 class HomeFragment : BaseFragment() {
@@ -19,7 +20,7 @@ class HomeFragment : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_home, container, false)
 
-
+        v.btnStartSurveyHome.setOnClickListener { intentTo(BabActivity::class.java) }
 
         return v
     }
