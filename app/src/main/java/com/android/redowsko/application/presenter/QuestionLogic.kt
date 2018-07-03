@@ -44,6 +44,8 @@ class QuestionLogic(private val view:Question.View) : Question.Presenter{
 
     override fun saveAnswer(size: Int) {
 
+        QuestionActivity.answer.clear()
+
         for(i in 0 until size){
             QuestionActivity.answer.add(Answer("Belum diisi","Belum dipilih"))
         }
