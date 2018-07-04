@@ -16,7 +16,7 @@ import com.android.redowsko.application.presenter.QuestionLogic
 import com.android.redowsko.util.dummymodel.Answer
 import kotlinx.android.synthetic.main.activity_question.*
 
-class QuestionActivity : BaseActivity(),Question.View {
+class QuestionActivity : BaseActivity(), Question.View {
 
     lateinit var presenter: Question.Presenter
     lateinit var i:Intent
@@ -69,7 +69,7 @@ class QuestionActivity : BaseActivity(),Question.View {
         val adapter = RVAdapterQuestion(this,question)
         adapter.notifyDataSetChanged()
         rvQuestion.adapter = adapter
-        presenter.saveAnswer(adapter.itemCount)
+        presenter.saveAnswer(this,question)
     }
 
     override fun showProgressBar() {

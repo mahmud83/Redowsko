@@ -11,7 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".application.ui.MainActivity" />
         <activity android:name=".application.ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,16 +19,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".application.ui.Homde"
-            android:label="@string/title_activity_homde"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".application.ui.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
         <activity android:name=".application.ui.BabActivity" />
         <activity android:name=".application.ui.AreaActivity" />
-        <activity android:name=".application.ui.QuestionActivity"></activity>
+        <activity android:name=".application.ui.QuestionActivity" />
+        <activity android:name=".application.ui.LoginActivity"></activity>
     </application>
 
 </manifest>

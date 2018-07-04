@@ -5,6 +5,7 @@ import android.os.Handler
 import android.view.WindowManager
 import com.android.redowsko.R
 import com.android.redowsko.application.base.BaseActivity
+import com.android.redowsko.util.sharedpref.UserSession
 
 class SplashActivity : BaseActivity() {
 
@@ -18,7 +19,11 @@ class SplashActivity : BaseActivity() {
 
         Handler().postDelayed(Runnable {
 
-            intentTo(HomeActivity::class.java)
+            if(UserSession(this).hasSession()){
+                intentTo(HomeActivity::class.java)
+            }else{
+                intentTo(LoginActivity::class.java)
+            }
 
         },DELAY)
 
