@@ -8,8 +8,12 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import com.afollestad.materialdialogs.DialogAction
+import com.afollestad.materialdialogs.MaterialDialog
 import com.android.redowsko.R
 import com.android.redowsko.application.base.BaseActivity
+import com.android.redowsko.util.sharedpref.UserSession
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 
@@ -72,8 +76,21 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_share -> {
 
             }
-            R.id.nav_send -> {
+            R.id.nav_logout -> {
 
+                MaterialDialog.Builder(this)
+                        .title("Konfirmasi")
+                        .content("Logout dari akun ?")
+                        .positiveText("LOGOUT")
+                        .negativeText("BATAL")
+                        .onPositive(object : MaterialDialog.SingleButtonCallback{
+                            override fun onClick(dialog: MaterialDialog, which: DialogAction) {
+                                UserSession(this@HomeActivity).destroySession()
+                                finish()
+                                intentTo(LoginActivity::class.java)
+                            }
+                        })
+                        .show()
             }
         }
 

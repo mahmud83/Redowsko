@@ -5,10 +5,10 @@ import android.content.SharedPreferences
 
 class UserSession(private val context: Context) {
 
-    val sp:SharedPreferences = context.getSharedPreferences("user",0)
+    val sp:SharedPreferences = context.getSharedPreferences("USER_SESSION",0)
     val edit:SharedPreferences.Editor = sp.edit()
 
-    fun makeSession(idUser:String){
+    fun makeSession(idUser:String?){
         edit.putString("idUser",idUser)
         edit.commit()
     }
@@ -19,6 +19,11 @@ class UserSession(private val context: Context) {
         }else{
             true
         }
+    }
+
+    fun destroySession(){
+        edit.clear()
+        edit.commit()
     }
 
     fun getIdUser() : String{
