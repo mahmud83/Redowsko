@@ -1,7 +1,6 @@
 package com.android.redowsko.application.ui
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -44,18 +43,10 @@ class AreaActivity : BaseActivity(),Area.View {
         presenter.loadArea(bab)
     }
 
-    override fun areaLoaded(area: ArrayList<com.android.redowsko.network.model.Area>?) {
+    override fun areaLoaded(area: ArrayList<com.android.redowsko.persistence.model.Area>?) {
         val adapter = RVAdapterArea(this,area)
         adapter.notifyDataSetChanged()
         rvArea.adapter = adapter
-    }
-
-    override fun dismissProgressBar() {
-        pbArea.visibility = View.GONE
-    }
-
-    override fun showProgressBar() {
-        pbArea.visibility = View.VISIBLE
     }
 
 }

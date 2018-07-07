@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.android.redowsko.R
 import com.android.redowsko.application.ui.AreaActivity
-import com.android.redowsko.network.model.Bab
-import com.android.redowsko.network.model.Question
+import com.android.redowsko.persistence.model.Bab
 import kotlinx.android.synthetic.main.list_bab.view.*
 
 class RVAdapterBab(private val context: Context, private val arrayList: ArrayList<Bab>?) : RecyclerView.Adapter<RVAdapterBab.Holder>(){

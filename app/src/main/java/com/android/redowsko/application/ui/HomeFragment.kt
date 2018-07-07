@@ -20,7 +20,7 @@ class HomeFragment : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_home, container, false)
 
-        v.btnStartSurveyHome.setOnClickListener { intentTo(BabActivity::class.java) }
+        v.btnStartSurveyHome.setOnClickListener { intentTo(SurveriorActivity::class.java) }
 
         return v
     }

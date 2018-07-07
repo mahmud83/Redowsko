@@ -1,7 +1,7 @@
 package com.android.redowsko.application.contract
 
 import com.android.redowsko.application.base.BaseView
-import com.android.redowsko.network.model.Bab
+import com.android.redowsko.persistence.model.Bab
 
 interface Bab {
 
@@ -11,8 +11,6 @@ interface Bab {
 
     interface View:BaseView{
         fun babLoaded(bab:ArrayList<Bab>?)
-        fun showProgressBar()
-        fun dismissProgressBar()
     }
 
 }

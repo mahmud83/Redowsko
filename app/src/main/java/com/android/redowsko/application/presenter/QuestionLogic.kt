@@ -19,28 +19,6 @@ class QuestionLogic(private val view:Question.View) : Question.Presenter{
 
         view.showProgressBar()
 
-        ApiConfig().instance().loadQuestion(bab,area,idSurverior)
-                .enqueue(object : retrofit2.Callback<LoadQuestionResponse>{
-
-                    override fun onFailure(call: Call<LoadQuestionResponse>?, t: Throwable?) {
-                        view.dismissProgressBar()
-                        view.showErrorMessage("Koneksi gagal, coba lagi.")
-                        Log.d("ONFAILURE",t.toString())
-                    }
-
-                    override fun onResponse(call: Call<LoadQuestionResponse>?, response: Response<LoadQuestionResponse>?) {
-
-                        if(response?.body()?.question?.size == 0){
-                            view.closeActivity()
-                            view.showInfoMessage("Data pertanyaan kosong")
-                        }
-
-                        view.dismissProgressBar()
-                        view.questionLoaded(response?.body()?.question)
-
-                    }
-
-                })
 
     }
 

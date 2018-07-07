@@ -23,6 +23,10 @@ class QuestionActivity : BaseActivity(), Question.View {
 
     companion object {
         var answer = ArrayList<Answer>()
+        var idSurverior:String? = null
+        var bab:String? = null
+        var area:String? = null
+        var idHospital:String? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

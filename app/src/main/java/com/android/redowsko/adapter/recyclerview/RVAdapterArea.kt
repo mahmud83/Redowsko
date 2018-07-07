@@ -1,6 +1,5 @@
 package com.android.redowsko.adapter.recyclerview
 
-import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,9 +8,7 @@ import android.view.ViewGroup
 import com.android.redowsko.R
 import com.android.redowsko.application.ui.AreaActivity
 import com.android.redowsko.application.ui.QuestionActivity
-import com.android.redowsko.network.model.Area
-import com.android.redowsko.network.model.Bab
-import com.android.redowsko.network.model.Question
+import com.android.redowsko.persistence.model.Area
 import kotlinx.android.synthetic.main.list_area.view.*
 
 class RVAdapterArea(private val context: AreaActivity, private val arrayList: ArrayList<Area>?) : RecyclerView.Adapter<RVAdapterArea.Holder>(){

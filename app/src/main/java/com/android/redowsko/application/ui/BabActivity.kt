@@ -1,6 +1,5 @@
 package com.android.redowsko.application.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -41,18 +40,10 @@ class BabActivity : BaseActivity(),Bab.View {
         presenter.loadBab()
     }
 
-    override fun babLoaded(bab: ArrayList<com.android.redowsko.network.model.Bab>?) {
+    override fun babLoaded(bab: ArrayList<com.android.redowsko.persistence.model.Bab>?) {
         val adapter = RVAdapterBab(this,bab)
         adapter.notifyDataSetChanged()
         rvBab.adapter = adapter
-    }
-
-    override fun showProgressBar() {
-        pbBab.visibility = View.VISIBLE
-    }
-
-    override fun dismissProgressBar() {
-        pbBab.visibility = View.GONE
     }
 
 }

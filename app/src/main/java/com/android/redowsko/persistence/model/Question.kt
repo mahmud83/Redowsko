@@ -1,4 +1,4 @@
-package com.android.redowsko.network.model
+package com.android.redowsko.persistence.model
 
 data class Question (
 

@@ -9,7 +9,6 @@ data class User(
         var phone:String,
         var city:String,
         var address:String,
-        var gender:String,
-        var surverior: Surverior
+        var gender:String
 
 )

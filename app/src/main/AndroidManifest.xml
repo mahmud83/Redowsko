@@ -3,6 +3,7 @@
     package="com.android.redowsko">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +26,8 @@
         <activity android:name=".application.ui.BabActivity" />
         <activity android:name=".application.ui.AreaActivity" />
         <activity android:name=".application.ui.QuestionActivity" />
-        <activity android:name=".application.ui.LoginActivity"></activity>
+        <activity android:name=".application.ui.LoginActivity" />
+        <activity android:name=".application.ui.SurveriorActivity"></activity>
     </application>
 
 </manifest>
