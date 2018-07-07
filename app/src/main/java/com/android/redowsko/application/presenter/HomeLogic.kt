@@ -86,6 +86,7 @@ class HomeLogic(private val view:Home.View, private val context: Context) : Home
                     override fun onFailure(call: Call<LoadSurveriorResponse>?, t: Throwable?) {
                         Log.d("ONFAILURE",t.toString())
                         view.dismissProgressDialog()
+                        view.loadUserDetailFailed()
                     }
 
                     override fun onResponse(call: Call<LoadSurveriorResponse>?, response: Response<LoadSurveriorResponse>?) {
@@ -113,6 +114,7 @@ class HomeLogic(private val view:Home.View, private val context: Context) : Home
                     override fun onFailure(call: Call<LoadQuestionResponse>?, t: Throwable?) {
                         view.dismissProgressDialog()
                         Log.d("ONFAILURE",t.toString())
+                        view.loadUserDetailFailed()
                     }
 
                     override fun onResponse(call: Call<LoadQuestionResponse>?, response: Response<LoadQuestionResponse>?) {
@@ -144,6 +146,7 @@ class HomeLogic(private val view:Home.View, private val context: Context) : Home
                     override fun onFailure(call: Call<LoadHospitalResponse>?, t: Throwable?) {
                         Log.d("ONFAILURE",t.toString())
                         view.dismissProgressDialog()
+                        view.loadUserDetailFailed()
 
                     }
 

@@ -4,37 +4,36 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import android.view.View
 import com.android.redowsko.R
-import com.android.redowsko.adapter.recyclerview.RVAdapterArea
+import com.android.redowsko.adapter.recyclerview.RVAdapterSelectArea
 import com.android.redowsko.application.base.BaseActivity
-import com.android.redowsko.application.contract.Area
+import com.android.redowsko.application.contract.SelectArea
 import com.android.redowsko.application.presenter.AreaLogic
-import kotlinx.android.synthetic.main.activity_area.*
+import kotlinx.android.synthetic.main.activity_select_area.*
 
-class AreaActivity : BaseActivity(),Area.View {
+class SelectAreaActivity : BaseActivity(),SelectArea.View {
 
     lateinit var i:Intent
-    lateinit var presenter: Area.Presenter
+    lateinit var presenter: SelectArea.Presenter
     var bab:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_area)
+        setContentView(R.layout.activity_select_area)
 
-        setSupportActionBar(tbArea)
-        supportActionBar?.title = "Pilih Area"
+        setSupportActionBar(tbSArea)
+        supportActionBar?.title = "Pilih SelectArea"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        presenter = AreaLogic(this)
+        presenter = AreaLogic(this,this)
         i = intent
         bab = i.getStringExtra("bab")
 
-        rvArea.setHasFixedSize(true)
-        rvArea.layoutManager = LinearLayoutManager(this)
-        rvArea.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        rvSArea.setHasFixedSize(true)
+        rvSArea.layoutManager = LinearLayoutManager(this)
+        rvSArea.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
-        tbArea.setNavigationOnClickListener { this.finish() }
+        tbSArea.setNavigationOnClickListener { this.finish() }
 
     }
 
@@ -44,9 +43,9 @@ class AreaActivity : BaseActivity(),Area.View {
     }
 
     override fun areaLoaded(area: ArrayList<com.android.redowsko.persistence.model.Area>?) {
-        val adapter = RVAdapterArea(this,area)
+        val adapter = RVAdapterSelectArea(this,area)
         adapter.notifyDataSetChanged()
-        rvArea.adapter = adapter
+        rvSArea.adapter = adapter
     }
 
 }

@@ -23,11 +23,13 @@
             android:name=".application.ui.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
-        <activity android:name=".application.ui.BabActivity" />
-        <activity android:name=".application.ui.AreaActivity" />
+        <activity android:name=".application.ui.SelectBabActivity" />
+        <activity android:name=".application.ui.SelectAreaActivity" />
         <activity android:name=".application.ui.QuestionActivity" />
         <activity android:name=".application.ui.LoginActivity" />
-        <activity android:name=".application.ui.SurveriorActivity"></activity>
+        <activity android:name=".application.ui.SelectSurveriorActivity" />
+        <activity android:name=".application.ui.SelectHospitalActivity" />
+        <activity android:name=".application.ui.SurveriorTaskActivity"></activity>
     </application>
 
 </manifest>

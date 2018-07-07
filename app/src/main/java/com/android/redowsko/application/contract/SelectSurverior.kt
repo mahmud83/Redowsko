@@ -3,7 +3,7 @@ package com.android.redowsko.application.contract
 import com.android.redowsko.application.base.BaseView
 import com.android.redowsko.persistence.model.Surverior
 
-interface Surverior {
+interface SelectSurverior {
 
     interface Presenter{
         fun loadSurverior()

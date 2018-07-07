@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".application.ui.SurveriorActivity">
+    tools:context=".application.ui.SelectAreaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/tbSurverior"
+            android:id="@+id/tbSArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -21,8 +21,9 @@
             app:titleTextColor="@android:color/white" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvSurverior"
+            android:id="@+id/rvSArea"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -6,15 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.android.redowsko.R
-import com.android.redowsko.application.ui.AreaActivity
+import com.android.redowsko.application.ui.SelectAreaActivity
 import com.android.redowsko.application.ui.QuestionActivity
 import com.android.redowsko.persistence.model.Area
-import kotlinx.android.synthetic.main.list_area.view.*
+import kotlinx.android.synthetic.main.list_select_area.view.*
 
-class RVAdapterArea(private val context: AreaActivity, private val arrayList: ArrayList<Area>?) : RecyclerView.Adapter<RVAdapterArea.Holder>(){
+class RVAdapterSelectArea(private val context: SelectAreaActivity, private val arrayList: ArrayList<Area>?) : RecyclerView.Adapter<RVAdapterSelectArea.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.list_area, parent, false))
+        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.list_select_area, parent, false))
     }
 
     override fun getItemCount(): Int = arrayList?.size ?:0
@@ -22,11 +22,10 @@ class RVAdapterArea(private val context: AreaActivity, private val arrayList: Ar
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
         val area = arrayList?.get(position)
-        holder.view.tvAreaBL.text = (position+1).toString()+". "+area?.area
+        holder.view.tvAreaLSA.text = (position+1).toString()+". "+area?.area
         holder.view.setOnClickListener {
+            QuestionActivity.area = area?.area
             val i = Intent(context,QuestionActivity::class.java)
-            i.putExtra("bab",context.bab)
-            i.putExtra("area",area?.area)
             context.startActivity(i)
         }
 

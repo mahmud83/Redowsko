@@ -1,34 +1,33 @@
 package com.android.redowsko.application.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.android.redowsko.R
-import com.android.redowsko.adapter.recyclerview.RVAdapterSurverior
+import com.android.redowsko.adapter.recyclerview.RVAdapterSelectSurverior
 import com.android.redowsko.application.base.BaseActivity
-import com.android.redowsko.application.contract.Surverior
+import com.android.redowsko.application.contract.SelectSurverior
 import com.android.redowsko.application.presenter.SurveriorLogic
-import kotlinx.android.synthetic.main.activity_surverior.*
+import kotlinx.android.synthetic.main.activity_select_surverior.*
 
-class SurveriorActivity : BaseActivity(),Surverior.View {
+class SelectSurveriorActivity : BaseActivity(),SelectSurverior.View {
 
-    lateinit var presenter:Surverior.Presenter
+    lateinit var presenter:SelectSurverior.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_surverior)
+        setContentView(R.layout.activity_select_surverior)
 
-        setSupportActionBar(tbSurverior)
+        setSupportActionBar(tbSSurverior)
         supportActionBar?.title = "Pilih bidang"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        tbSurverior.setNavigationOnClickListener { this.finish() }
+        tbSSurverior.setNavigationOnClickListener { this.finish() }
 
         presenter = SurveriorLogic(this,this)
 
-        rvSurverior.setHasFixedSize(true)
-        rvSurverior.layoutManager = LinearLayoutManager(this)
-        rvSurverior.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        rvSSurverior.setHasFixedSize(true)
+        rvSSurverior.layoutManager = LinearLayoutManager(this)
+        rvSSurverior.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
     }
 
@@ -38,8 +37,8 @@ class SurveriorActivity : BaseActivity(),Surverior.View {
     }
 
     override fun surveriorLoaded(surverior: ArrayList<com.android.redowsko.persistence.model.Surverior>?) {
-        val adapter = RVAdapterSurverior(this,surverior)
+        val adapter = RVAdapterSelectSurverior(this,surverior)
         adapter.notifyDataSetChanged()
-        rvSurverior.adapter = adapter
+        rvSSurverior.adapter = adapter
     }
 }

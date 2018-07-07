@@ -13,20 +13,22 @@ import com.android.redowsko.adapter.recyclerview.RVAdapterQuestion
 import com.android.redowsko.application.base.BaseActivity
 import com.android.redowsko.application.contract.Question
 import com.android.redowsko.application.presenter.QuestionLogic
+import com.android.redowsko.persistence.DatabaseHelper
 import com.android.redowsko.util.dummymodel.Answer
+import com.android.redowsko.util.sharedpref.UserDetail
 import kotlinx.android.synthetic.main.activity_question.*
 
 class QuestionActivity : BaseActivity(), Question.View {
 
     lateinit var presenter: Question.Presenter
-    lateinit var i:Intent
 
     companion object {
         var answer = ArrayList<Answer>()
-        var idSurverior:String? = null
         var bab:String? = null
         var area:String? = null
-        var idHospital:String? = null
+        var idSurverior:Int? = null
+        var idUser:Int? = null
+        var idSurveriorTask:String? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +41,7 @@ class QuestionActivity : BaseActivity(), Question.View {
 
         tbQuestion.setNavigationOnClickListener { this.finish() }
 
-        presenter = QuestionLogic(this)
-        i = intent
+        presenter = QuestionLogic(this,this)
 
         rvQuestion.setHasFixedSize(true)
         rvQuestion.layoutManager = LinearLayoutManager(this)
@@ -66,22 +67,25 @@ class QuestionActivity : BaseActivity(), Question.View {
 
     override fun onResume() {
         super.onResume()
-        presenter.loadQuestion(i.getStringExtra("bab"),i.getStringExtra("area"),"1")
+        presenter.loadQuestion(bab, area, idSurverior)
     }
 
-    override fun questionLoaded(question: ArrayList<com.android.redowsko.network.model.Question>?) {
+    override fun questionLoaded(question: ArrayList<com.android.redowsko.persistence.model.Question>?) {
         val adapter = RVAdapterQuestion(this,question)
         adapter.notifyDataSetChanged()
         rvQuestion.adapter = adapter
         presenter.saveAnswer(this,question)
-    }
 
-    override fun showProgressBar() {
-        pbQuestion.visibility = View.VISIBLE
-    }
+        MaterialDialog.Builder(this)
+                .title("Memulai Survey")
+                .content("Bidang : "+DatabaseHelper(this).loadSurveriorNameById(idSurverior)+"\n" +
+                        "Nama Surverior : "+UserDetail(this).getName()+"\n" +
+                        "BAB : "+bab+"\n" +
+                        "Area : "+area+"\n" +
+                        "Nama Kegiatan : "+idSurveriorTask)
+                .positiveText("MULAI")
+                .show()
 
-    override fun dismissProgressBar() {
-        pbQuestion.visibility = View.GONE
     }
 
 }

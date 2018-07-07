@@ -10,8 +10,8 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/tvBabBL"
+        android:id="@+id/tvSurveriorLSS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Contoh Bab" />
+        tools:text="Contoh Surverior" />
 </LinearLayout>

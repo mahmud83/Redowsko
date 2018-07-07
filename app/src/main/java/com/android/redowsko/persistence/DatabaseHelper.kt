@@ -12,6 +12,7 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, "
         const val TABLE_QUESTION = "tb_question"
         const val TABLE_HOSPITAL = "tb_hospital"
         const val TABLE_SURVERIOR = "tb_surverior"
+        const val TABLE_SURVERIOR_TASK = "tb_surverior_task"
     }
 
     override fun onCreate(p0: SQLiteDatabase?) {
@@ -45,9 +46,16 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, "
                 "name TEXT" +
                 ")"
 
+        val CREATE_SURVERIOR_TASK_TABLE = "CREATE TABLE $TABLE_SURVERIOR_TASK (" +
+                "id_surverior_task VARCHAR(200) PRIMARY KEY NOT NULL," +
+                "id_surverior," +
+                "id_user" +
+                ")"
+
         p0?.execSQL(CREATE_QUESTION_TABLE)
         p0?.execSQL(CREATE_HOSPITAL_TABLE)
         p0?.execSQL(CREATE_SURVERIOR_TABLE)
+        p0?.execSQL(CREATE_SURVERIOR_TASK_TABLE)
 
     }
 
@@ -261,6 +269,110 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, "
                 cursor.moveToNext()
 
             }
+
+        }
+
+        return arrayList
+
+    }
+
+    fun loadSurveriorNameById(idSurverior:Int?) : String?{
+
+        var name:String? = null
+
+        val db = writableDatabase
+
+        val LOAD = "SELECT name FROM $TABLE_SURVERIOR WHERE id_surverior=$idSurverior"
+
+        val cursor:Cursor = db.rawQuery(LOAD,null)
+
+        if(cursor.moveToFirst()){
+
+            name = cursor.getString(0)
+
+        }
+
+        return name
+
+    }
+
+    fun insertSurveriorTask(idSurveriorTask:String,idSurverior:Int,idUser:Int){
+
+        val db = writableDatabase
+
+        val INSERT = "INSERT INTO $TABLE_SURVERIOR_TASK VALUES('$idSurveriorTask',$idSurverior,$idUser)"
+
+        db.execSQL(INSERT)
+
+    }
+
+    fun isSurveriorTaskExist(idSurveriorTask:String?) : Boolean{
+
+        var getIdSurveriorTask:String? = null
+
+        val db = writableDatabase
+
+        val CHECK = "SELECT id_surverior_task FROM $TABLE_SURVERIOR_TASK WHERE id_surverior_task='$idSurveriorTask'"
+
+        val cursor:Cursor = db.rawQuery(CHECK,null)
+
+        if(cursor.moveToFirst()){
+
+            for(i in 0 until cursor.count){
+                getIdSurveriorTask = cursor.getString(0)
+            }
+
+        }
+
+        return if(getIdSurveriorTask.equals(idSurveriorTask)){
+            true
+        }else{
+            false
+        }
+
+    }
+
+
+    fun loadSurveriorTask(idUser:Int) : ArrayList<SurveriorTask>{
+
+        val arrayList = ArrayList<SurveriorTask>()
+
+        val db = writableDatabase
+
+        val LOAD = "SELECT * FROM $TABLE_SURVERIOR_TASK WHERE id_user=$idUser"
+
+        val cursor:Cursor = db.rawQuery(LOAD,null)
+
+        if(cursor.moveToFirst()){
+
+            for(i in 0 until cursor.count){
+                arrayList.add(SurveriorTask(cursor.getString(0),
+                        cursor.getInt(1),
+                        cursor.getInt(2)))
+                cursor.moveToNext()
+            }
+
+        }
+
+        return arrayList
+
+    }
+
+    fun loadSurveriorTaskById(idSurveriorTask:String) : ArrayList<SurveriorTask>{
+
+        val arrayList = ArrayList<SurveriorTask>()
+
+        val db = writableDatabase
+
+        val LOAD = "SELECT * FROM $TABLE_SURVERIOR_TASK WHERE id_surverior_task='$idSurveriorTask'"
+
+        val cursor:Cursor = db.rawQuery(LOAD,null)
+
+        if(cursor.moveToFirst()){
+
+            arrayList.add(SurveriorTask(cursor.getString(0),
+                    cursor.getInt(1),
+                    cursor.getInt(2)))
 
         }
 

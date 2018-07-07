@@ -1,10 +1,10 @@
 package com.android.redowsko.application.presenter
 
 import android.content.Context
-import com.android.redowsko.application.contract.Surverior
+import com.android.redowsko.application.contract.SelectSurverior
 import com.android.redowsko.persistence.DatabaseHelper
 
-class SurveriorLogic(private val view:Surverior.View, private val context: Context) : Surverior.Presenter {
+class SurveriorLogic(private val view:SelectSurverior.View, private val context: Context) : SelectSurverior.Presenter {
 
     override fun loadSurverior() {
 

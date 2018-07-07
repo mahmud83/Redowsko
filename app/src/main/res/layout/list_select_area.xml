@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:padding="16dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:padding="16dp"
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/tvSurveriorLS"
+        android:id="@+id/tvAreaLSA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Contoh Surverior" />
+        tools:text="Contoh Area" />
 </LinearLayout>

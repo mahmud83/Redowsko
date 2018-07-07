@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.android.redowsko.R
 import com.android.redowsko.application.ui.QuestionActivity
-import com.android.redowsko.network.model.Question
+import com.android.redowsko.persistence.model.Question
 import kotlinx.android.synthetic.main.list_question.view.*
 
 class RVAdapterQuestion(private val context: Context, private val arrayList: ArrayList<Question>?) : RecyclerView.Adapter<RVAdapterQuestion.Holder>(){

@@ -2,36 +2,35 @@ package com.android.redowsko.application.ui
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.view.View
 import com.android.redowsko.R
-import com.android.redowsko.adapter.recyclerview.RVAdapterBab
+import com.android.redowsko.adapter.recyclerview.RVAdapterSelectBab
 import com.android.redowsko.application.base.BaseActivity
-import com.android.redowsko.application.contract.Bab
+import com.android.redowsko.application.contract.SelectBab
 import com.android.redowsko.application.presenter.BabLogic
-import kotlinx.android.synthetic.main.activity_bab.*
+import kotlinx.android.synthetic.main.activity_select_bab.*
 import android.support.v7.widget.DividerItemDecoration
 
 
 
-class BabActivity : BaseActivity(),Bab.View {
+class SelectBabActivity : BaseActivity(),SelectBab.View {
 
-    lateinit var presenter: Bab.Presenter
+    lateinit var presenter: SelectBab.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bab)
+        setContentView(R.layout.activity_select_bab)
 
-        setSupportActionBar(tbBab)
+        setSupportActionBar(tbSBab)
         supportActionBar?.title = "Pilih BAB"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        presenter = BabLogic(this)
+        presenter = BabLogic(this,this)
 
-        tbBab.setNavigationOnClickListener { this.finish() }
+        tbSBab.setNavigationOnClickListener { this.finish() }
 
-        rvBab.setHasFixedSize(true)
-        rvBab.layoutManager = LinearLayoutManager(this)
-        rvBab.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        rvSBab.setHasFixedSize(true)
+        rvSBab.layoutManager = LinearLayoutManager(this)
+        rvSBab.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
     }
 
@@ -41,9 +40,9 @@ class BabActivity : BaseActivity(),Bab.View {
     }
 
     override fun babLoaded(bab: ArrayList<com.android.redowsko.persistence.model.Bab>?) {
-        val adapter = RVAdapterBab(this,bab)
+        val adapter = RVAdapterSelectBab(this,bab)
         adapter.notifyDataSetChanged()
-        rvBab.adapter = adapter
+        rvSBab.adapter = adapter
     }
 
 }

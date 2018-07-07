@@ -8,7 +8,7 @@ data class Answer (
         var created_at:String?,
         var updated_at:String?,
         var id_question:Int?,
-        var id_hospital:Int?,
-        var id_user:Int?
+        var id_user:Int?,
+        var id_surverior_task:String?
 
 )

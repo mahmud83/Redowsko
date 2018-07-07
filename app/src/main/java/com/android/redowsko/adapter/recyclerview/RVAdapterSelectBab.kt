@@ -7,14 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.android.redowsko.R
-import com.android.redowsko.application.ui.AreaActivity
+import com.android.redowsko.application.ui.QuestionActivity
+import com.android.redowsko.application.ui.SelectAreaActivity
 import com.android.redowsko.persistence.model.Bab
-import kotlinx.android.synthetic.main.list_bab.view.*
+import kotlinx.android.synthetic.main.list_select_bab.view.*
 
-class RVAdapterBab(private val context: Context, private val arrayList: ArrayList<Bab>?) : RecyclerView.Adapter<RVAdapterBab.Holder>(){
+class RVAdapterSelectBab(private val context: Context, private val arrayList: ArrayList<Bab>?) : RecyclerView.Adapter<RVAdapterSelectBab.Holder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.list_bab, parent, false))
+        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.list_select_bab, parent, false))
     }
 
     override fun getItemCount(): Int = arrayList?.size ?:0
@@ -22,9 +23,10 @@ class RVAdapterBab(private val context: Context, private val arrayList: ArrayLis
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
         val bab = arrayList?.get(position)
-        holder.view.tvBabBL.text = (position+1).toString()+". "+bab?.bab?.toUpperCase()
+        holder.view.tvBabLSB.text = (position+1).toString()+". "+bab?.bab?.toUpperCase()
         holder.view.setOnClickListener {
-            val i = Intent(context,AreaActivity::class.java)
+            QuestionActivity.bab = bab?.bab
+            val i = Intent(context,SelectAreaActivity::class.java)
             i.putExtra("bab",bab?.bab)
             context.startActivity(i)
         }

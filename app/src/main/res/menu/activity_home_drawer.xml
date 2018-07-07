@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_home_black_24dp"
             android:checked="true"
             android:title="Beranda" />
+        <item
+            android:id="@+id/nav_surverior_task"
+            android:icon="@drawable/ic_work_black_24dp"
+            android:title="Survey Berjalan" />
     </group>
 
     <item android:title="Navigasi">

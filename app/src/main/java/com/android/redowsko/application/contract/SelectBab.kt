@@ -1,16 +1,16 @@
 package com.android.redowsko.application.contract
 
 import com.android.redowsko.application.base.BaseView
-import com.android.redowsko.persistence.model.Area
+import com.android.redowsko.persistence.model.Bab
 
-interface Area {
+interface SelectBab {
 
     interface Presenter{
-        fun loadArea(bab:String?)
+        fun loadBab()
     }
 
     interface View:BaseView{
-        fun areaLoaded(area:ArrayList<Area>?)
+        fun babLoaded(bab:ArrayList<Bab>?)
     }
 
 }
