@@ -22,7 +22,7 @@ class SelectAreaActivity : BaseActivity(),SelectArea.View {
         setContentView(R.layout.activity_select_area)
 
         setSupportActionBar(tbSArea)
-        supportActionBar?.title = "Pilih SelectArea"
+        supportActionBar?.title = "Pilih Area"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         presenter = AreaLogic(this,this)

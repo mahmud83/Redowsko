@@ -43,11 +43,11 @@
             android:text="10" />
 
         <RadioButton
-            android:id="@+id/radioTTDLQ"
+            android:id="@+id/radioTDDLQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TTD" />
+            android:text="TDD" />
 
     </RadioGroup>
 

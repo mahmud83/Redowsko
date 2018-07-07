@@ -48,7 +48,7 @@ class RVAdapterQuestion(private val context: Context, private val arrayList: Arr
                 R.id.radio0LQ -> QuestionActivity.answer.get(position)?.option = "0"
                 R.id.radio10LQ -> QuestionActivity.answer.get(position)?.option = "10"
                 R.id.radio5LQ -> QuestionActivity.answer.get(position)?.option = "5"
-                R.id.radioTTDLQ -> QuestionActivity.answer.get(position)?.option = "TTD"
+                R.id.radioTDDLQ -> QuestionActivity.answer.get(position)?.option = "TDD"
             }
 
         }
