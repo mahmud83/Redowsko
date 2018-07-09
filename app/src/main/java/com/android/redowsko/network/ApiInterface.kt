@@ -2,18 +2,18 @@ package com.android.redowsko.network
 
 import com.android.redowsko.network.response.*
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiInterface {
 
     @GET("redowsko/load_question")
     fun loadQuestion() : Call<LoadQuestionResponse>
 
-    @GET("redowsko/login")
+    @FormUrlEncoded
+    @POST("redowsko/login")
     fun login(
-            @Query("email")email:String?,
-            @Query("password")password:String?
+            @Field("email")email:String?,
+            @Field("password")password:String?
     ) : Call<LoginResponse>
 
     @GET("redowsko/user_detail")
