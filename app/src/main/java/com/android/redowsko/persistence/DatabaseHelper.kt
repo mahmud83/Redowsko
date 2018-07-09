@@ -48,8 +48,8 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, "
 
         val CREATE_SURVERIOR_TASK_TABLE = "CREATE TABLE $TABLE_SURVERIOR_TASK (" +
                 "id_surverior_task VARCHAR(200) PRIMARY KEY NOT NULL," +
-                "id_surverior," +
-                "id_user" +
+                "id_surverior INT(20)," +
+                "id_user INT(20)" +
                 ")"
 
         p0?.execSQL(CREATE_QUESTION_TABLE)
