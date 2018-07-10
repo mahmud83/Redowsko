@@ -13,6 +13,16 @@
             android:id="@+id/nav_surverior_task"
             android:icon="@drawable/ic_work_black_24dp"
             android:title="Survey Berjalan" />
+
+        <item
+            android:id="@+id/nav_surverior_done"
+            android:icon="@drawable/ic_done_black_24dp"
+            android:title="Survey Hasil" />
+
+        <item
+            android:id="@+id/nav_hospital"
+            android:icon="@drawable/ic_local_hospital_black_24dp"
+            android:title="Data Rumah Sakit" />
     </group>
 
     <item android:title="Navigasi">

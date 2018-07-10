@@ -24,7 +24,7 @@ open class BaseFragment : Fragment(),BaseView{
         loading = materialDialog.build()
     }
 
-    fun intentTo(target:Class<*>){
+    override fun intentTo(target:Class<*>){
         startActivity(Intent(activity,target))
     }
 

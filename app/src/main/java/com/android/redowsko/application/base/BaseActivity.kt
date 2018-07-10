@@ -23,7 +23,7 @@ open class BaseActivity : AppCompatActivity(), BaseView{
 
     }
 
-    fun intentTo(target:Class<*>){
+    override fun intentTo(target:Class<*>){
         startActivity(Intent(this,target))
     }
 

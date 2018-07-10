@@ -28,9 +28,9 @@ class RVAdapterQuestion(private val context: Context, private val arrayList: Arr
         holder.view.edDescLQ.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(p0: Editable?) {
                 if (p0.toString().isNullOrBlank()){
-                    QuestionActivity.answer?.get(position)?.desc = "Belum diisi"
+                    QuestionActivity.answer?.get(position)?.descr = "Belum diisi"
                 }else{
-                    QuestionActivity.answer?.get(position)?.desc = p0?.toString()
+                    QuestionActivity.answer?.get(position)?.descr = p0?.toString()
                 }
             }
 
@@ -45,10 +45,10 @@ class RVAdapterQuestion(private val context: Context, private val arrayList: Arr
         holder.view.rgLQ.setOnCheckedChangeListener { radioGroup, i ->
 
             when(i){
-                R.id.radio0LQ -> QuestionActivity.answer.get(position)?.option = "0"
-                R.id.radio10LQ -> QuestionActivity.answer.get(position)?.option = "10"
-                R.id.radio5LQ -> QuestionActivity.answer.get(position)?.option = "5"
-                R.id.radioTDDLQ -> QuestionActivity.answer.get(position)?.option = "TDD"
+                R.id.radio0LQ -> QuestionActivity.answer.get(position)?.options = "0"
+                R.id.radio10LQ -> QuestionActivity.answer.get(position)?.options = "10"
+                R.id.radio5LQ -> QuestionActivity.answer.get(position)?.options = "5"
+                R.id.radioTDDLQ -> QuestionActivity.answer.get(position)?.options = "TDD"
             }
 
         }

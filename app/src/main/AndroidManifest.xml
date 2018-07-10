@@ -29,7 +29,8 @@
         <activity android:name=".application.ui.LoginActivity" />
         <activity android:name=".application.ui.SelectSurveriorActivity" />
         <activity android:name=".application.ui.SelectHospitalActivity" />
-        <activity android:name=".application.ui.SurveriorTaskActivity"></activity>
+        <activity android:name=".application.ui.SurveriorTaskActivity" />
+        <activity android:name=".application.ui.SurveyResultDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -93,6 +93,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_surverior_task -> {
                 fm.beginTransaction().replace(R.id.flHome,RunningTaskFragment()).commit()
             }
+            R.id.nav_surverior_done ->{
+                fm.beginTransaction().replace(R.id.flHome,SurveyResultFragment()).commit()
+            }
             R.id.nav_logout -> {
 
                 MaterialDialog.Builder(this)

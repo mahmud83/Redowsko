@@ -3,6 +3,7 @@ package com.android.redowsko.application.ui
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -27,6 +28,8 @@ class RunningTaskFragment : BaseFragment(), RunningTask.View{
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_running_task, container, false)
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Survey berjalan"
 
         presenter = RunningTaskLogic(this,context!!)
         v.rvRTask.setHasFixedSize(true)

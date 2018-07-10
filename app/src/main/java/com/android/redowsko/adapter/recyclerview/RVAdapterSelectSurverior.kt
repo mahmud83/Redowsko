@@ -31,7 +31,7 @@ class RVAdapterSelectSurverior(private val context: Context, private val surveri
 
         val surverior = surverior?.get(position)
 
-        holder.v.tvSurveriorLSS.text = surverior?.name
+        holder.v.tvSurveriorLSS.text = (position+1).toString()+". "+surverior?.name
 
         holder.v.setOnClickListener {
 
@@ -49,6 +49,7 @@ class RVAdapterSelectSurverior(private val context: Context, private val surveri
                         }
 
                     })
+                    .negativeText("BATAL")
                     .inputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE)
                     .show()
 

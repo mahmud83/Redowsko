@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:padding="16dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:padding="16dp"
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/tvSurveriorLSS"
+        android:id="@+id/tvSurveyLSR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
         android:textSize="15sp"
         android:textStyle="bold"
-        tools:text="Contoh Surverior" />
+        tools:text="Nama kegiatan" />
+
 </LinearLayout>

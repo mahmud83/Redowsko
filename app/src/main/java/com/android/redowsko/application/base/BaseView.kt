@@ -7,4 +7,5 @@ interface BaseView {
     fun showProgressDialog()
     fun dismissProgressDialog()
     fun closeActivity()
+    fun intentTo(target:Class<*>)
 }

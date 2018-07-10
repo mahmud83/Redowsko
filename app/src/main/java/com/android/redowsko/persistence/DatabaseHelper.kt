@@ -6,13 +6,14 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.android.redowsko.persistence.model.*
 
-class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, "db_redowsko", null, 1) {
+class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "db_redowsko", null, 1) {
 
     companion object {
         const val TABLE_QUESTION = "tb_question"
         const val TABLE_HOSPITAL = "tb_hospital"
         const val TABLE_SURVERIOR = "tb_surverior"
         const val TABLE_SURVERIOR_TASK = "tb_surverior_task"
+        const val TABLE_ANSWER = "tb_answer"
     }
 
     override fun onCreate(p0: SQLiteDatabase?) {
@@ -52,10 +53,22 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, "
                 "id_user INT(20)" +
                 ")"
 
+        val CREATE_ANSWER_TABLE = "CREATE TABLE $TABLE_ANSWER(" +
+                "id_answer INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                "question TEXT," +
+                "descr TEXT," +
+                "options TEXT," +
+                "created_at TIMESTAMP," +
+                "updated_at TIMESTAMP," +
+                "id_user INT(20)," +
+                "id_surverior_task VARCHAR(200)" +
+                ")"
+
         p0?.execSQL(CREATE_QUESTION_TABLE)
         p0?.execSQL(CREATE_HOSPITAL_TABLE)
         p0?.execSQL(CREATE_SURVERIOR_TABLE)
         p0?.execSQL(CREATE_SURVERIOR_TASK_TABLE)
+        p0?.execSQL(CREATE_ANSWER_TABLE)
 
     }
 
@@ -373,6 +386,90 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, "
             arrayList.add(SurveriorTask(cursor.getString(0),
                     cursor.getInt(1),
                     cursor.getInt(2)))
+
+        }
+
+        return arrayList
+
+    }
+
+    fun addAnswer(question:String?, descr:String?, options:String?, id_user:Int?, id_surverior_task:String?){
+
+        val db = writableDatabase
+
+        val ADD = "INSERT INTO $TABLE_ANSWER (question,descr,options,created_at,updated_at,id_user,id_surverior_task) VALUES(" +
+                "'$question'," +
+                "'$descr'," +
+                "'$options'," +
+                "datetime('now')," +
+                "datetime('now')," +
+                "$id_user," +
+                "'$id_surverior_task'" +
+                ")"
+
+        db.execSQL(ADD)
+
+    }
+
+    fun loadAnswer() : ArrayList<Answer>{
+
+        val arrayList = ArrayList<Answer>()
+
+        val db = writableDatabase
+
+        val LOAD = "SELECT *  FROM $TABLE_ANSWER GROUP BY id_surverior_task ORDER BY id_answer DESC"
+
+        val cursor:Cursor = db.rawQuery(LOAD,null)
+
+        if(cursor.moveToFirst()){
+
+            for(i in 0 until cursor.count){
+
+                arrayList.add(Answer(cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getInt(6),
+                        cursor.getString(7)))
+
+                cursor.moveToNext()
+
+            }
+
+        }
+
+        return arrayList
+
+    }
+
+    fun loadAnswerDetailByTask(idSurveriorTask: String?) : ArrayList<Answer>{
+
+        val arrayList = ArrayList<Answer>()
+
+        val db = writableDatabase
+
+        val LOAD = "SELECT *  FROM $TABLE_ANSWER WHERE id_surverior_task='$idSurveriorTask' ORDER BY id_answer DESC"
+
+        val cursor:Cursor = db.rawQuery(LOAD,null)
+
+        if(cursor.moveToFirst()){
+
+            for(i in 0 until cursor.count){
+
+                arrayList.add(Answer(cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getInt(6),
+                        cursor.getString(7)))
+
+                cursor.moveToNext()
+
+            }
 
         }
 
